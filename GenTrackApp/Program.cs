@@ -10,14 +10,6 @@ namespace GenTrackApp
 {
     internal class Program
     {
-        public enum Transition
-        {
-            Start,
-            CreateNewCSV,
-            AddLine,
-            End
-        }
-
         public enum State
         {
             None,
