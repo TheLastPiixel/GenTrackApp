@@ -1,0 +1,8 @@
+C:\Users\TheLastPiixel\source\repos\GenTrackApp\GenTrackApp\bin\Debug\GenTrackApp.exe.config
+C:\Users\TheLastPiixel\source\repos\GenTrackApp\GenTrackApp\bin\Debug\GenTrackApp.exe
+C:\Users\TheLastPiixel\source\repos\GenTrackApp\GenTrackApp\bin\Debug\GenTrackApp.pdb
+C:\Users\TheLastPiixel\source\repos\GenTrackApp\GenTrackApp\obj\Debug\GenTrackApp.csproj.AssemblyReference.cache
+C:\Users\TheLastPiixel\source\repos\GenTrackApp\GenTrackApp\obj\Debug\GenTrackApp.csproj.SuggestedBindingRedirects.cache
+C:\Users\TheLastPiixel\source\repos\GenTrackApp\GenTrackApp\obj\Debug\GenTrackApp.csproj.CoreCompileInputs.cache
+C:\Users\TheLastPiixel\source\repos\GenTrackApp\GenTrackApp\obj\Debug\GenTrackApp.exe
+C:\Users\TheLastPiixel\source\repos\GenTrackApp\GenTrackApp\obj\Debug\GenTrackApp.pdb
