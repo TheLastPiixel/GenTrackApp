@@ -45,12 +45,11 @@ namespace GenTrackApp
         public static List<string> ExtractData(string tagName, string filePath)
         {
             bool insideTag = false;
-            string URLString = filePath;
             string data = "";
 
             try
             {
-                XmlTextReader reader = new XmlTextReader(URLString);
+                XmlTextReader reader = new XmlTextReader(filePath);
                 while (reader.Read())
                 {
                     if (reader.Name == tagName)
@@ -117,9 +116,10 @@ namespace GenTrackApp
             State transition = State.Start;
             State state = State.None;
 
-            for (int i = 0; i < allCSVLines.Count; i++)
+            foreach (string line in allCSVLines)
             {
-                code = ReadFirstElement(allCSVLines[i]);
+                code = ReadFirstElement(line);
+                //Handles FSM transitions
                 switch (transition)
                 {
                     case State.Start:
@@ -157,10 +157,11 @@ namespace GenTrackApp
                         break;
                 }
 
+                //Executes code for each state in the FSM
                 switch (state)
                 {
                     case State.Start:
-                        headerRow = allCSVLines[i];
+                        headerRow = line;
                         state = State.None;
                         break;
                     case State.CreateNewCSV:
@@ -173,16 +174,16 @@ namespace GenTrackApp
                             listOfCSVs.Add(currentCsv);
                             currentCsv = "";
                         }
-                        currentCsv = currentCsv + allCSVLines[i] + (char)13;
+                        currentCsv = currentCsv + line + (char)13;
                         state = State.None;
                         break;
                     case State.AddLine:
-                        currentCsv = currentCsv + allCSVLines[i] + (char)13;
+                        currentCsv = currentCsv + line + (char)13;
                         state = State.None;
                         break;
                     case State.End:
                         listOfCSVs.Add(currentCsv);
-                        trailerRow = allCSVLines[i];
+                        trailerRow = line;
                         state = State.None;
                         return (headerRow, trailerRow, listOfCSVs);
                         break;
@@ -239,7 +240,6 @@ namespace GenTrackApp
                 if (row.Length >= 3)
                 {
                     string threeDigitNumber = row.Substring(0, 3);
-                    //Console.WriteLine("Value is: " + threeDigitNumber);
                     return Int32.Parse(threeDigitNumber);
                 }
                 return 0;
@@ -295,6 +295,7 @@ namespace GenTrackApp
             {
                 switch (data[pos])
                 {
+                    //Search for <Space><LF><CR><TAB>
                     case (char)11:
                     case (char)12:
                     case (char)13:
